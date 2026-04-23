@@ -1,14 +1,19 @@
-NAME = cub3d
+NAME = cub3D
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I includes -I libft -I libft/get_next_line
 
 RM = rm -rf
 
-SRC = srcs/main.c
+SRC = srcs/main/main.c \
+      srcs/parsing/parsing.c \
+	  srcs/parsing/read_file.c \
+	  srcs/utils/utils.c \
 
 OBJ_DIR = objs
-OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
+OBJS = $(SRC:srcs/%.c=$(OBJ_DIR)/%.o)
+
+LIBFT = libft/libft.a
 
 GREEN = \033[0;32m
 RED = \033[0;31m
@@ -18,23 +23,29 @@ RESET = \033[0m
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(LIBFT):
+	@echo "$(BLUE)Compiling libft...$(RESET)"
+	@$(MAKE) -C libft
+
+$(NAME): $(OBJS) $(LIBFT)
 	@echo "$(BLUE)Linking $(NAME)...$(RESET)"
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) -Llibft -lft -o $(NAME)
 	@echo "$(GREEN)✔ $(NAME) compiled successfully!$(RESET)"
 
 $(OBJ_DIR)/%.o: srcs/%.c
-	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(dir $@)
 	@echo "$(YELLOW)Compiling $<...$(RESET)"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@echo "$(RED)Cleaning object files...$(RESET)"
 	@$(RM) $(OBJ_DIR)
+	@$(MAKE) -C libft clean
 
 fclean: clean
 	@echo "$(RED)Removing executable...$(RESET)"
 	@$(RM) $(NAME)
+	@$(MAKE) -C libft fclean
 
 re: fclean all
 

@@ -35,4 +35,13 @@ typedef struct s_data
 
 }	t_data;
 
+//parsing
+
+int		parsing_file(t_data *data, char *file);
+void	read_file(t_data *data, int fd);
+
+//utils
+
+int		ft_isspace(char c);
+
 #endif
