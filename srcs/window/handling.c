@@ -2,17 +2,25 @@
 
 int	handle_input(int keysym, t_data *data)
 {
+	int	i;
+
+	i = 0;
 	if (keysym == XK_Escape)
 	{
-		mlx_destroy_window(data->mlx.mlx, data->mlx.win);
-		mlx_loop_end(data->mlx.mlx);
+		i = mlx_loop_end(data->mlx.mlx);
+		if (i != 0)
+			return i;
 	}
 	return (0);
 }
 
 int	handle_close(t_data *data)
 {
-	mlx_destroy_window(data->mlx.mlx, data->mlx.win);
-	mlx_loop_end(data->mlx.mlx);
+	int	i;
+
+	i = 0;
+	i = mlx_loop_end(data->mlx.mlx);
+	if (i != 0)
+		return i;
 	return (0);
 }

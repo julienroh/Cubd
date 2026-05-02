@@ -19,8 +19,8 @@
 #include <X11/X.h>
 #include <math.h>
 
-# define WIN_H 1920
-# define WIN_W 3000
+# define WIN_H 500
+# define WIN_W 500
 
 typedef struct s_color
 {
