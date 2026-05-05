@@ -6,8 +6,15 @@ CFLAGS = -Wall -Wextra -Werror -I includes -I libft -I libft/get_next_line
 RM = rm -rf
 
 SRC = srcs/main/main.c \
+	  srcs/parsing/map.c \
+	  srcs/parsing/parse_color.c \
+	  srcs/parsing/parse_direction.c \
       srcs/parsing/parsing.c \
+	  srcs/parsing/process_line.c \
 	  srcs/parsing/read_file.c \
+	  srcs/player/initialize_player.c \
+	  srcs/utils/parsing_utils.c \
+	  srcs/utils/parsing_utils_2.c \
 	  srcs/utils/utils.c \
 
 OBJ_DIR = objs
