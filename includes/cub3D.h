@@ -2,12 +2,28 @@
 # define CUB3D_H
 
 #include "libft.h"
+#include "mlx.h" 
 #include <unistd.h>
 #include <stdlib.h>
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <limits.h>
+#include <stdbool.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <errno.h>
+#include <X11/keysym.h>
+#include <X11/X.h>
+#include <math.h>
 
-#define PARSE_OK 0
-#define PARSE_ERROR 1
-#define PARSE_NOT_MATCH 2
+# define WIN_H 500
+# define WIN_W 500
+# define PARSE_OK 0
+# define PARSE_ERROR 1
+# define PARSE_NOT_MATCH 2
 
 typedef struct s_color
 {
@@ -16,6 +32,19 @@ typedef struct s_color
 	int	b;
 	int	is_set;
 }	t_color;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_len;
+	int		endian;
+	int		offset;
+
+}	t_mlx;
 
 typedef struct s_data
 {
@@ -37,7 +66,17 @@ typedef struct s_data
 	char	player_dir;
 
 	char	*error_msg;
+	t_mlx	mlx;
 }	t_data;
+
+
+//window handling
+
+void	clean(t_data *data);
+void	start(t_data *data);
+void	img_pix_put(t_mlx *mlx, int x, int y, int color);
+int		handle_input(int keysym, t_data *data);
+int		handle_close(t_data *data);
 
 //map.c
 

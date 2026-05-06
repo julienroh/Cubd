@@ -39,13 +39,9 @@ RESET = \033[0m
 
 all: $(NAME)
 
-$(LIBFT):
-	@echo "$(BLUE)Compiling libft...$(RESET)"
-	@$(MAKE) -C libft
-
 $(NAME): $(OBJS) $(LIBFT)
 	@echo "$(BLUE)Linking $(NAME)...$(RESET)"
-	@$(CC) $(CFLAGS) $(OBJS) -Llibft -lft -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) -Llibft -lft $(MLX) $(MLXFLAGS) -o $(NAME)
 	@echo "$(GREEN)✔ $(NAME) compiled successfully!$(RESET)"
 
 # Compilation de la Libft

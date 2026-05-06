@@ -1,4 +1,16 @@
-#include "cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   windowstart.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/06 12:00:39 by mfumeaux          #+#    #+#             */
+/*   Updated: 2026/05/06 12:08:17 by mfumeaux         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub3D.h"
 
 void	img_pix_put(t_mlx *mlx, int x, int y, int color)
 {
@@ -23,7 +35,7 @@ void	start(t_data *data)
 		return ;
 	data->mlx.addr = mlx_get_data_addr(data->mlx.img, &data->mlx.bits_per_pixel,
 			&data->mlx.line_len, &data->mlx.endian);
-	for(int i = 0; i< WIN_W; i++)
+	for(int i = 0; i< WIN_W; i++) //Osef c'est pour test le render. ça deviendra la fonction renderframe plus tard.
 	{
 			for(int j = 0; j < WIN_H; j++)
 			{

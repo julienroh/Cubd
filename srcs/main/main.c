@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 09:43:24 by jroh              #+#    #+#             */
-/*   Updated: 2026/04/28 17:19:37 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/06 12:03:51 by mfumeaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,6 @@ static void	print_data(t_data *data)
 	printf("error_msg = %s\n", data->error_msg);
 }
 
-
-
-
-
-
 static void	initialize_data(t_data *data)
 {
 	data->no = NULL;
@@ -74,6 +69,9 @@ static void	initialize_data(t_data *data)
 	data->player_y = 0;
 	data->player_dir = '\0';
 	data->error_msg = NULL;
+	data->mlx.img = NULL;
+	data->mlx.mlx = NULL;
+	data->mlx.addr = NULL;
 }
 
 int	main(int argc, char **argv)
@@ -94,5 +92,7 @@ int	main(int argc, char **argv)
 	if (initialize_player(&data) == 1)
 		return (1);//free_all(data);
 	print_data(&data);
+	start(&data);
+	clean(&data);
 	return (0);
 }
