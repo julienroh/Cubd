@@ -1,4 +1,4 @@
-NAME = cub3d
+NAME = cub3D
 
 CC = cc
 # Ajout de -g pour le debug si besoin, et correction des includes
@@ -10,13 +10,25 @@ MLXFLAGS = -L/usr/lib -lXext -lX11 -lm
 RM = rm -rf
 LIBFT = libft/libft.a
 
-SRC =   srcs/main.c \
-        srcs/window/windowstart.c \
-        srcs/window/handling.c \
-        srcs/cleanup/cleanup.c \
+SRC =	srcs/main/main.c \
+		srcs/parsing/map.c \
+		srcs/parsing/parse_color.c \
+		srcs/parsing/parse_direction.c \
+		srcs/parsing/parsing.c \
+		srcs/parsing/process_line.c \
+		srcs/parsing/read_file.c \
+		srcs/player/initialize_player.c \
+		srcs/utils/parsing_utils.c \
+		srcs/utils/parsing_utils_2.c \
+		srcs/utils/utils.c \
+		srcs/window/windowstart.c \
+		srcs/window/handling.c \
+		srcs/cleanup/cleanup.c \
 
 OBJ_DIR = objs
 OBJS = $(SRC:srcs/%.c=$(OBJ_DIR)/%.o)
+
+LIBFT = libft/libft.a
 
 # Couleurs
 GREEN = \033[0;32m
@@ -27,10 +39,13 @@ RESET = \033[0m
 
 all: $(NAME)
 
-# Compilation du binaire final
+$(LIBFT):
+	@echo "$(BLUE)Compiling libft...$(RESET)"
+	@$(MAKE) -C libft
+
 $(NAME): $(OBJS) $(LIBFT)
 	@echo "$(BLUE)Linking $(NAME)...$(RESET)"
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLXFLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) -Llibft -lft -o $(NAME)
 	@echo "$(GREEN)✔ $(NAME) compiled successfully!$(RESET)"
 
 # Compilation de la Libft
