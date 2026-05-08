@@ -19,6 +19,7 @@
 #include <X11/X.h>
 #include <math.h>
 
+# define TILE_SIZE 32
 # define WIN_H 500
 # define WIN_W 500
 # define PARSE_OK 0
@@ -72,10 +73,12 @@ typedef struct s_data
 
 //window handling
 
+void	draw_background(t_data *data);
 void	clean(t_data *data);
 void	start(t_data *data);
 int		handle_input(int keysym, t_data *data);
 int		handle_close(t_data *data);
+void	draw_map(t_data *data);
 
 //map.c
 
@@ -122,5 +125,11 @@ int		is_nbr(char *s);
 //utils.c
 
 int		ft_isspace(char c);
+
+//window_utils.c
+
+int		rgb_to_int(t_color color);
+void	img_pix_put(t_mlx *mlx, int x, int y, int color);
+void	draw_square(t_data *data, int start_x, int start_y, int color);
 
 #endif

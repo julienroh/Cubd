@@ -3,7 +3,7 @@ NAME = cub3D
 CC = cc
 # Ajout de -g pour le debug si besoin, et correction des includes
 CFLAGS = -Wall -Wextra -Werror -I includes -I libft -I libft/get_next_line -I mlx
-MLX = mlx/libmlx_Linux.a 
+MLX = mlx/libmlx_Linux.a
 # -lm doit souvent être à la fin de la ligne de compilation
 MLXFLAGS = -L/usr/lib -lXext -lX11 -lm
 
@@ -21,8 +21,11 @@ SRC =	srcs/main/main.c \
 		srcs/utils/parsing_utils.c \
 		srcs/utils/parsing_utils_2.c \
 		srcs/utils/utils.c \
+		srcs/utils/window_utils.c \
 		srcs/window/windowstart.c \
 		srcs/window/handling.c \
+		srcs/window/draw_background.c \
+		srcs/window/draw_map.c \
 		srcs/cleanup/cleanup.c \
 
 OBJ_DIR = objs
