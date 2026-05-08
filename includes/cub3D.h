@@ -2,7 +2,7 @@
 # define CUB3D_H
 
 #include "libft.h"
-#include "mlx.h" 
+#include "mlx.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <math.h>
@@ -74,7 +74,6 @@ typedef struct s_data
 
 void	clean(t_data *data);
 void	start(t_data *data);
-void	img_pix_put(t_mlx *mlx, int x, int y, int color);
 int		handle_input(int keysym, t_data *data);
 int		handle_close(t_data *data);
 

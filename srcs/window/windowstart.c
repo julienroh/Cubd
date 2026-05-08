@@ -3,16 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   windowstart.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 12:00:39 by mfumeaux          #+#    #+#             */
-/*   Updated: 2026/05/06 12:08:17 by mfumeaux         ###   ########.fr       */
+/*   Updated: 2026/05/07 15:12:43 by haoky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	img_pix_put(t_mlx *mlx, int x, int y, int color)
+static int	rgb_to_int(t_color color)
+{
+	return ((color.r << 16) | (color.g << 8) | color.b);
+}
+
+static void	img_pix_put(t_mlx *mlx, int x, int y, int color)
 {
 	char	*pixel;
 
@@ -22,9 +27,34 @@ void	img_pix_put(t_mlx *mlx, int x, int y, int color)
 	*(int *)pixel = color;
 }
 
+void	draw_background(t_data *data)
+{
+	int	x;
+	int	y;
+	int	floor_color;
+	int	ceiling_color;
+
+	floor_color = rgb_to_int(data->floor);
+	ceiling_color = rgb_to_int(data->ceiling);
+	y = 0;
+	while (y < WIN_H)
+	{
+		x = 0;
+		while (x < WIN_W)
+		{
+			if (y < WIN_H / 2)
+				img_pix_put(&data->mlx, x, y, ceiling_color);
+			else
+				img_pix_put(&data->mlx, x, y, floor_color);
+			x++;
+		}
+		y++;
+	}
+}
+
 void	start(t_data *data)
 {
-	data->mlx.mlx = mlx_init(); 
+	data->mlx.mlx = mlx_init();
 	if (!data->mlx.mlx)
 		return ;
 	data->mlx.win = mlx_new_window(data->mlx.mlx, WIN_W, WIN_H, "LoupCaillou");
@@ -35,16 +65,7 @@ void	start(t_data *data)
 		return ;
 	data->mlx.addr = mlx_get_data_addr(data->mlx.img, &data->mlx.bits_per_pixel,
 			&data->mlx.line_len, &data->mlx.endian);
-	for(int i = 0; i< WIN_W; i++) //Osef c'est pour test le render. ça deviendra la fonction renderframe plus tard.
-	{
-			for(int j = 0; j < WIN_H; j++)
-			{
-				if (j%15 == 0)
-					img_pix_put(&data->mlx, j, i, 0xFF4E4FEE);
-
-			}
-		img_pix_put(&data->mlx, 40, i, 0xFF4E4FEE);
-	}
+	draw_background(data);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->mlx.img, 0, 0);
 	mlx_key_hook(data->mlx.win, &handle_input, data);
 	mlx_hook(data->mlx.win, DestroyNotify, StructureNotifyMask,
@@ -52,6 +73,3 @@ void	start(t_data *data)
 	mlx_loop(data->mlx.mlx);
 	clean(data);
 }
-
-
-
