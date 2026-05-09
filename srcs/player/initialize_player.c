@@ -6,7 +6,7 @@
 /*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:47:38 by haoky             #+#    #+#             */
-/*   Updated: 2026/04/28 16:05:34 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/09 13:26:50 by haoky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 
 static int	set_player_dir(t_data *data, char direction, int x, int y)
 {
-	if (data->player_dir != '\0')
+	data->map[y][x] = '0';
+	if (data->player_dir_x != 0 || data->player_dir_y != 0)
 	{
 		printf("Error\nDuplicate start position\n");
 		return (1);
 	}
-	data->player_dir = direction;
+	if (direction == 'N')
+		data->player_dir_y = -1;
+	if (direction == 'S')
+		data->player_dir_y = 1;
+	if (direction == 'W')
+		data->player_dir_x = -1;
+	if (direction == 'E')
+		data->player_dir_x = 1;
 	data->player_x = x;
 	data->player_y = y;
 	return (0);

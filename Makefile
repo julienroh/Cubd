@@ -18,6 +18,9 @@ SRC =	srcs/main/main.c \
 		srcs/parsing/process_line.c \
 		srcs/parsing/read_file.c \
 		srcs/player/initialize_player.c \
+		srcs/player/move_player.c \
+		srcs/player/draw_player.c \
+		srcs/render/render_frame.c \
 		srcs/utils/parsing_utils.c \
 		srcs/utils/parsing_utils_2.c \
 		srcs/utils/utils.c \
@@ -25,6 +28,7 @@ SRC =	srcs/main/main.c \
 		srcs/window/windowstart.c \
 		srcs/window/handling.c \
 		srcs/window/draw_background.c \
+		srcs/window/game_loop.c \
 		srcs/window/draw_map.c \
 		srcs/cleanup/cleanup.c \
 

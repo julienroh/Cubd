@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 09:43:24 by jroh              #+#    #+#             */
-/*   Updated: 2026/05/06 12:03:51 by mfumeaux         ###   ########.fr       */
+/*   Updated: 2026/05/09 14:03:01 by haoky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,10 @@ static void	print_data(t_data *data)
 	printf("map width = %d\n", data->map_width);
 	printf("map height = %d\n", data->map_height);
 
-	printf("player_x = %d\n", data->player_x);
-	printf("player_y = %d\n", data->player_y);
-	printf("player_dir = %c\n", data->player_dir);
+	printf("player_x = %f\n", data->player_x);
+	printf("player_y = %f\n", data->player_y);
+	printf("player_dir_x = %f\n", data->player_dir_x);
+	printf("player_dir_y = %f\n", data->player_dir_y);
 	printf("error_msg = %s\n", data->error_msg);
 }
 
@@ -60,6 +61,10 @@ static void	initialize_data(t_data *data)
 	data->so = NULL;
 	data->we = NULL;
 	data->ea = NULL;
+	data->key_a = 0;
+	data->key_d = 0;
+	data->key_s = 0;
+	data->key_w = 0;
 	data->floor.is_set = 0;
 	data->ceiling.is_set = 0;
 	data->map = NULL;
@@ -67,7 +72,8 @@ static void	initialize_data(t_data *data)
 	data->map_width = 0;
 	data->player_x = 0;
 	data->player_y = 0;
-	data->player_dir = '\0';
+	data->player_dir_x = 0;
+	data->player_dir_y = 0;
 	data->error_msg = NULL;
 	data->mlx.img = NULL;
 	data->mlx.mlx = NULL;

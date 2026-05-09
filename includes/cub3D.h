@@ -54,6 +54,11 @@ typedef struct s_data
 	char	*we;
 	char	*ea;//a free
 
+	int		key_w;
+	int		key_s;
+	int		key_a;
+	int		key_d;
+
 	t_color	floor;//a free
 	t_color	ceiling;//a free
 
@@ -62,23 +67,41 @@ typedef struct s_data
 	int		map_width;
 	int		map_height;
 
-	int		player_x;
-	int		player_y;
-	char	player_dir;
+	double	player_x;
+	double	player_y;
+	double	player_dir_x;
+	double	player_dir_y;
 
 	char	*error_msg;
 	t_mlx	mlx;
 }	t_data;
 
 
-//window handling
+//cleanup.c
+
+void	clean(t_data *data);
+
+//windowstart.c
+
+void	start(t_data *data);
+
+//draw_background.c
 
 void	draw_background(t_data *data);
-void	clean(t_data *data);
-void	start(t_data *data);
-int		handle_input(int keysym, t_data *data);
+
+//handling.c
+
+int		handle_key_press(int keysym, t_data *data);
+int		handle_key_release(int keysym, t_data *data);
 int		handle_close(t_data *data);
+
+//draw_map.c
+
 void	draw_map(t_data *data);
+
+//game_loop.c
+
+int		game_loop(t_data *data);
 
 //map.c
 
@@ -114,9 +137,24 @@ void	free_tab(char **tab);
 char	*skip_spaces(char *str);
 int		error_exit(t_data *data);
 
+//draw_player.c
+
+void	draw_player(t_data *data);
+
 //initialize_player.c
 
 int		initialize_player(t_data *data);
+
+//move_player.c
+
+void	move_forward(t_data *data);
+void	move_backward(t_data *data);
+void	move_left(t_data *data);
+void	move_right(t_data *data);
+
+//render_frame.c
+
+void	render_frame(t_data *data);
 
 //parsing_utils_2.c
 
