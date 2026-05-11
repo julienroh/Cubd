@@ -19,12 +19,14 @@
 #include <X11/X.h>
 #include <math.h>
 
+
 # define TILE_SIZE 32
-# define WIN_H 500
-# define WIN_W 500
+# define WIN_H 1024
+# define WIN_W 720
 # define PARSE_OK 0
 # define PARSE_ERROR 1
 # define PARSE_NOT_MATCH 2
+# define M_PI 3.141592654
 
 typedef struct s_color
 {
@@ -71,10 +73,20 @@ typedef struct s_data
 	double	player_y;
 	double	player_dir_x;
 	double	player_dir_y;
+	double	plane_x;
+	double	plane_y;
+	double	dir_x;
+	double	dir_y;
 
 	char	*error_msg;
 	t_mlx	mlx;
 }	t_data;
+
+
+//camera.c
+
+
+//raycast.c
 
 
 //cleanup.c
@@ -149,8 +161,8 @@ int		initialize_player(t_data *data);
 
 void	move_forward(t_data *data);
 void	move_backward(t_data *data);
-void	move_left(t_data *data);
-void	move_right(t_data *data);
+void	rotate_left(t_data *data);
+void	rotate_right(t_data *data);
 
 //render_frame.c
 
