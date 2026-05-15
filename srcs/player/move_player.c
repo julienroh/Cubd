@@ -6,7 +6,7 @@
 /*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 11:32:00 by haoky             #+#    #+#             */
-/*   Updated: 2026/05/11 18:06:19 by mfumeaux         ###   ########.fr       */
+/*   Updated: 2026/05/14 14:10:23 by mfumeaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ void	move_backward(t_data *data)
 }
 
 
-/* x_new = x * cos(alpha) - y * sin(alpha)
-   y_new = x * sin(alpha) + y * cos(alpha) 
-   alpha = rot_speed					*/
+/*  rotate angle of view using rotation matrice : 
+		x_new = x * cos(alpha) - y * sin(alpha)
+		y_new = x * sin(alpha) + y * cos(alpha) 
+		alpha = angle of rotation, determining rot_speed.	*/
 void	rotate_left(t_data *data)
 {
 	double	rot_speed;

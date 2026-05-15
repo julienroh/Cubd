@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 09:43:24 by jroh              #+#    #+#             */
-/*   Updated: 2026/05/09 14:03:01 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/15 15:15:44 by mfumeaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,13 @@ static void	initialize_data(t_data *data)
 	data->player_y = 0;
 	data->player_dir_x = 0;
 	data->player_dir_y = 0;
+	data->plane_x = 0;
+	data->plane_y = 0;
 	data->error_msg = NULL;
 	data->mlx.img = NULL;
 	data->mlx.mlx = NULL;
 	data->mlx.addr = NULL;
+	initialize_data_two(data);
 }
 
 int	main(int argc, char **argv)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 13:43:17 by haoky             #+#    #+#             */
-/*   Updated: 2026/05/09 13:58:52 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/12 14:33:58 by mfumeaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	game_loop(t_data *data)
 	if (data->key_s)
 		move_backward(data);
 	if (data->key_a)
-		move_left(data);
+		rotate_left(data);
 	if (data->key_d)
-		move_right(data);
+		rotate_right(data);
 	render_frame(data);
 	return (0);
 }

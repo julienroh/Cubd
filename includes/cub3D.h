@@ -26,7 +26,7 @@
 # define PARSE_OK 0
 # define PARSE_ERROR 1
 # define PARSE_NOT_MATCH 2
-# define M_PI 3.141592654
+//# define M_PI 3.141592654
 
 typedef struct s_color
 {
@@ -77,6 +77,15 @@ typedef struct s_data
 	double	plane_y;
 	double	dir_x;
 	double	dir_y;
+	double	screen_ratio;
+	double	raydir_x;
+	double	raydir_y;
+	double	map_x;
+	double	map_y;
+	double	sidedist_x;
+	double	sidedist_y;
+	double	deltadist_x;
+	double	deltadist_y;
 
 	char	*error_msg;
 	t_mlx	mlx;
@@ -175,6 +184,7 @@ int		is_nbr(char *s);
 //utils.c
 
 int		ft_isspace(char c);
+void	initialize_data_two(t_data *data);
 
 //window_utils.c
 
