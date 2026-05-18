@@ -166,6 +166,7 @@ int		error_exit(t_data *data);
 //draw_player.c
 
 void	draw_player(t_data *data);
+void	draw_dir(t_data *data);
 
 //initialize_player.c
 
