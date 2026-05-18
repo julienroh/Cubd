@@ -86,6 +86,11 @@ typedef struct s_data
 	double	sidedist_y;
 	double	deltadist_x;
 	double	deltadist_y;
+	double	stepx;
+	double	stepy;
+	double	perp_wall_dist;
+	double	side;
+	double	hit;
 
 	char	*error_msg;
 	t_mlx	mlx;
