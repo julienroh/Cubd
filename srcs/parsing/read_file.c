@@ -6,7 +6,7 @@
 /*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 12:28:48 by jroh              #+#    #+#             */
-/*   Updated: 2026/04/23 20:34:27 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/20 14:05:40 by haoky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	read_file(t_data *data, int fd)
 	}
 	if (!data->map)
 		return (printf("Error\nNo map\n"), 1);
-	if (all_set(data)!= 0)
+	if (all_set(data) != 0)
 		return (printf("Error\nMissing elements\n"), 1);
 	return (0);
 }

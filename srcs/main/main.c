@@ -6,7 +6,7 @@
 /*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 09:43:24 by jroh              #+#    #+#             */
-/*   Updated: 2026/05/09 14:03:01 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/20 14:07:00 by haoky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,13 @@ static void	print_data(t_data *data)
 	printf("SO = %s\n", data->so);
 	printf("WE = %s\n", data->we);
 	printf("EA = %s\n", data->ea);
-
 	printf("floor : \n");
 	print_color(data->floor);
 	printf("ceiling : \n");
 	print_color(data->ceiling);
-
 	print_map(data->map);
 	printf("map width = %d\n", data->map_width);
 	printf("map height = %d\n", data->map_height);
-
 	printf("player_x = %f\n", data->player_x);
 	printf("player_y = %f\n", data->player_y);
 	printf("player_dir_x = %f\n", data->player_dir_x);

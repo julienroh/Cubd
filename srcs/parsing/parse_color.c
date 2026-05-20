@@ -6,7 +6,7 @@
 /*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 20:32:07 by haoky             #+#    #+#             */
-/*   Updated: 2026/04/28 11:32:16 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/20 14:06:36 by haoky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	parse_rgb(char *line, t_color *color, t_data *data)
 		return (data->error_msg = "Color out of range", PARSE_ERROR);
 	}
 	free_tab(rgb);
-	return(PARSE_OK);
+	return (PARSE_OK);
 }
 
 int	read_color(t_data *data, char *line)

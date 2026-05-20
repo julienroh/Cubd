@@ -6,7 +6,7 @@
 /*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 12:00:39 by mfumeaux          #+#    #+#             */
-/*   Updated: 2026/05/09 13:58:03 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/20 14:04:52 by haoky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	start(t_data *data)
 			&data->mlx.line_len, &data->mlx.endian);
 	render_frame(data);
 	mlx_hook(data->mlx.win, KeyPress, KeyPressMask,
-	handle_key_press, data);
+		handle_key_press, data);
 	mlx_hook(data->mlx.win, KeyRelease, KeyReleaseMask,
-	handle_key_release, data);
+		handle_key_release, data);
 	mlx_loop_hook(data->mlx.mlx, game_loop, data);
 	mlx_hook(data->mlx.win, DestroyNotify, StructureNotifyMask,
 		&handle_close, data);

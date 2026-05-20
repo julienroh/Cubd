@@ -6,7 +6,7 @@
 /*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 20:30:58 by haoky             #+#    #+#             */
-/*   Updated: 2026/04/28 17:20:11 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/20 14:05:15 by haoky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	read_direction(t_data *data, char *line)
 		return (data->error_msg = "Duplicate texture", PARSE_ERROR);
 	line += 2;
 	line = skip_spaces(line);
-	*path = ft_strtrim(line," \n\t");
+	*path = ft_strtrim(line, " \n\t");
 	if (!*path)
 		return (data->error_msg = "Malloc failed", PARSE_ERROR);
 	return (PARSE_OK);
