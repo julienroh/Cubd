@@ -6,7 +6,7 @@
 /*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 12:00:37 by mfumeaux          #+#    #+#             */
-/*   Updated: 2026/05/09 13:58:10 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/20 14:04:40 by haoky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ int	handle_close(t_data *data)
 	i = 0;
 	i = mlx_loop_end(data->mlx.mlx);
 	if (i != 0)
-		return i;
+		return (i);
 	return (0);
 }

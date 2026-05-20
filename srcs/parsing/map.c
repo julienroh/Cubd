@@ -6,7 +6,7 @@
 /*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 20:23:35 by haoky             #+#    #+#             */
-/*   Updated: 2026/04/28 11:24:08 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/20 14:06:08 by haoky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	get_map_width(char **map)
 
 	max = 0;
 	i = 0;
-
 	while (map[i])
 	{
 		len = ft_strlen(map[i]);
@@ -56,7 +55,6 @@ int	add_map_line(t_data *data, char *line)
 	new_map = malloc(sizeof(char *) * (data->map_height + 2));
 	if (!new_map)
 		return (data->error_msg = "Malloc failed", PARSE_ERROR);
-
 	i = 0;
 	while (i < data->map_height)
 	{
@@ -69,7 +67,7 @@ int	add_map_line(t_data *data, char *line)
 	new_map[i] = ft_strtrim(line, "\n");
 	if (!new_map[i])
 		return (free_map(new_map),
-				data->error_msg = "Malloc failed", PARSE_ERROR);
+			data->error_msg = "Malloc failed", PARSE_ERROR);
 	new_map[i + 1] = NULL;
 	free_map(data->map);
 	data->map = new_map;

@@ -6,7 +6,7 @@
 /*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 18:53:52 by haoky             #+#    #+#             */
-/*   Updated: 2026/04/28 10:45:06 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/20 14:08:04 by haoky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	all_set(t_data *data)
 {
 	if (data->no != NULL && data->so != NULL
-		&& data->we != NULL && data->ea !=NULL
+		&& data->we != NULL && data->ea != NULL
 		&& data->floor.is_set == 1 && data->ceiling.is_set == 1)
 		return (0);
 	else
@@ -43,7 +43,7 @@ void	free_tab(char **tab)
 
 	i = 0;
 	if (!tab)
-		return;
+		return ;
 	while (tab[i])
 	{
 		free(tab[i]);
