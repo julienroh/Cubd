@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 09:43:24 by jroh              #+#    #+#             */
-/*   Updated: 2026/05/20 14:09:48 by mfumeaux         ###   ########.fr       */
+/*   Updated: 2026/05/20 14:49:23 by haoky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ static void	initialize_data(t_data *data)
 	data->key_d = 0;
 	data->key_s = 0;
 	data->key_w = 0;
+	data->left = 0;
+	data->right = 0;
 	data->floor.is_set = 0;
 	data->ceiling.is_set = 0;
 	data->map = NULL;

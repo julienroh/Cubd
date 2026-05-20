@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 11:32:00 by haoky             #+#    #+#             */
-/*   Updated: 2026/05/20 13:38:31 by mfumeaux         ###   ########.fr       */
+/*   Updated: 2026/05/20 15:30:24 by haoky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,55 +14,36 @@
 
 void	move_forward(t_data *data)
 {
-	if (data->map[(int)data->player_y - 1][(int)data->player_x] != '1')
-		data->player_y -= 0.03;
+	double	new_y;
+
+	new_y = data->player_y - MOVE_SPEED;
+	if (data->map[(int)(new_y - PLAYER_RADIUS)][(int)data->player_x] != '1')
+		data->player_y = new_y;
 }
 
 void	move_backward(t_data *data)
 {
-	if (data->map[(int)data->player_y + 1][(int)data->player_x] != '1')
-		data->player_y += 0.03;
+	double	new_y;
+
+	new_y = data->player_y + MOVE_SPEED;
+	if (data->map[(int)(new_y + PLAYER_RADIUS)][(int)data->player_x] != '1')
+		data->player_y = new_y;
 }
 
-
-/*  rotate angle of view using rotation matrice : 
-		x_new = x * cos(alpha) - y * sin(alpha)
-		y_new = x * sin(alpha) + y * cos(alpha) 
-		alpha = angle of rotation, determining rot_speed.	*/
-void	rotate_left(t_data *data)
+void	move_left(t_data *data)
 {
-	double	rot_speed;
-	double 	old_player_dir_x;
-	double	old_plane_x;
+	double	new_x;
 
-	old_player_dir_x = data->player_dir_x;
-	old_plane_x = data->plane_x;
-	rot_speed = -0.05;
-	data->player_dir_x = data->player_dir_x * cos(rot_speed)
-		- data->player_dir_y * sin(rot_speed);
-	data->player_dir_y = old_player_dir_x * sin(rot_speed)
-		+ data->player_dir_y * cos(rot_speed);
-	data->plane_x = old_plane_x * cos(rot_speed)
-		- data->plane_y * sin(rot_speed);
-	data->plane_y = old_plane_x * sin(rot_speed)
-		+ data->plane_y * cos(rot_speed);
+	new_x = data->player_x - MOVE_SPEED;
+	if (data->map[(int)data->player_y][(int)(new_x - PLAYER_RADIUS)] != '1')
+		data->player_x = new_x;
 }
 
-void	rotate_right(t_data *data)
-{	
-	double	rot_speed;
-	double 	old_player_dir_x;
-	double	old_plane_x;
-	
-	old_plane_x = data->plane_x;
-	old_player_dir_x = data->player_dir_x;
-	rot_speed = 0.05;
-	data->player_dir_x = data->player_dir_x * cos(rot_speed)
-		- data->player_dir_y * sin(rot_speed);
-	data->player_dir_y = old_player_dir_x * sin(rot_speed)
-		+ data->player_dir_y * cos(rot_speed);
-	data->plane_x = old_plane_x * cos(rot_speed)
-		- data->plane_y * sin(rot_speed);
-	data->plane_y = old_plane_x * sin(rot_speed)
-		+ data->plane_y * cos(rot_speed);
+void	move_right(t_data *data)
+{
+	double	new_x;
+
+	new_x = data->player_x + MOVE_SPEED;
+	if (data->map[(int)data->player_y][(int)(new_x + PLAYER_RADIUS)] != '1')
+		data->player_x = new_x;
 }
