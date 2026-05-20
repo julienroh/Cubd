@@ -6,7 +6,7 @@
 /*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 11:32:11 by haoky             #+#    #+#             */
-/*   Updated: 2026/05/20 15:31:22 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/20 15:47:00 by haoky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	draw_player(t_data *data)
 
 	x = (int)(data->player_x * TILE_SIZE);
 	y = (int)(data->player_y * TILE_SIZE);
-	draw_player_square(data, x - PLAYER_DRAW_SIZE / 2, y - PLAYER_DRAW_SIZE / 2, 0xF0000);
+	draw_player_square(data, x - PLAYER_DRAW_SIZE / 2, y - PLAYER_DRAW_SIZE / 2, 1234567);
 }
 
 void	draw_dir(t_data *data)
@@ -47,11 +47,11 @@ void	draw_dir(t_data *data)
 	int 	k;
 
 	k = 0;
-	curr_x = (data->player_x * TILE_SIZE) + (TILE_SIZE / 2);
-	curr_y = (data->player_y * TILE_SIZE) + (TILE_SIZE / 2);
+	curr_x = (data->player_x * TILE_SIZE) + (PLAYER_RADIUS);
+	curr_y = (data->player_y * TILE_SIZE) + (PLAYER_RADIUS);
 	while (k < 50)
 	{
-		img_pix_put(&data->mlx, (int)curr_x, (int)curr_y, 0x06C7DC);
+		img_pix_put(&data->mlx, (int)curr_x, (int)curr_y, 0xFF4444);
 		curr_x += data->player_dir_x;
 		curr_y += data->player_dir_y;
 		k++;

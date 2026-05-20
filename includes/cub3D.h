@@ -21,9 +21,9 @@
 
 
 # define TILE_SIZE 32
-# define PLAYER_DRAW_SIZE 8
+# define PLAYER_RADIUS 0.25
+# define PLAYER_DRAW_SIZE 16
 # define MOVE_SPEED 0.03
-# define PLAYER_RADIUS 0.2
 # define WIN_H 1024
 # define WIN_W 720
 # define PARSE_OK 0
