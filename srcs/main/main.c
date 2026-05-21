@@ -6,7 +6,7 @@
 /*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 09:43:24 by jroh              #+#    #+#             */
-/*   Updated: 2026/05/20 14:49:23 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/21 15:07:16 by haoky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	print_map(char **map)
 	int	i;
 
 	i = 0;
+	printf("map : \n");
 	while (map[i])
 	{
 		printf("%s\n", map[i]);
