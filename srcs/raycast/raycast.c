@@ -6,12 +6,11 @@
 /*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:00:16 by mfumeaux          #+#    #+#             */
-/*   Updated: 2026/05/16 16:43:21 by mfumeaux         ###   ########.fr       */
+/*   Updated: 2026/05/21 19:34:36 by mfumeaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
 
 static void	initialize_sidedist_dda(t_data *data)
 {
@@ -50,20 +49,21 @@ static void	initialize_sidedist_dda(t_data *data)
 	*/
 static void	initialize_dda_vars(t_data *data, int x)
 {
-		data->screen_ratio = 2 * x / WIN_W -1;
-		data->raydir_x = data->player_dir_x + data->plane_x
-		* data->screen_ratio;
-		data->raydir_y = data->player_dir_y + data->plane_y
-		* data->screen_ratio;
-		data->deltadist_x = fabs(1 / data->raydir_x);
-		data->deltadist_y = fabs(1 / data->raydir_y);
-	// if (data->raydir_x == 0)
-	// 	data->deltadist_x = 1e30;
-	// else
-	// 	data->deltadist_x = fabs(1 / data->raydir_x);
-		data->map_x = (int)data->player_x;
-		data->map_y = (int)data->player_x;
-		initialize_sidedist_dda(data);
+	// data->screen_ratio = 2 * x / WIN_W - 1;
+	data->screen_ratio = 2.0 * x / (double)WIN_W - 1.0;
+	data->raydir_x = data->player_dir_x + data->plane_x
+	* data->screen_ratio;
+	data->raydir_y = data->player_dir_y + data->plane_y
+	* data->screen_ratio;
+	data->deltadist_x = fabs(1 / data->raydir_x);
+	data->deltadist_y = fabs(1 / data->raydir_y);
+	if (data->raydir_x == 0)
+		data->deltadist_x = 1e30;
+	else
+	data->deltadist_x = fabs(1 / data->raydir_x);
+	data->map_x = (int)data->player_x;
+	data->map_y = (int)data->player_y;
+	initialize_sidedist_dda(data);
 }
 
 static void	dda(t_data *data)
@@ -87,6 +87,29 @@ static void	dda(t_data *data)
 	}
 }
 
+static void	wall_projection(t_data *data, int x)
+{
+	int	y;
+
+	data->line_height = (int)(WIN_H / data ->perp_wall_dist);
+	data->draw_start = -(data->line_height) / 2 + WIN_H / 2;
+	if (data->draw_start < 0)
+	data->draw_start = 0;
+	data->draw_end = data->line_height / 2 + WIN_H / 2;
+	if (data->draw_end >= WIN_H)
+	data->draw_end = WIN_H - 1;
+	y = data->draw_start;
+	while (y <= data->draw_end)
+	{
+		img_pix_put(&data->mlx, x, y, 0x007F00);
+		// if (data->side == 1)
+		// 	img_pix_put(&data->mlx, x, y, 0x007F00);
+		// else
+		// 	img_pix_put(&data->mlx, x, y, 0x00FF00);
+		y++;
+	}
+}
+
 int	raycast(t_data *data)
 {
 	int x;
@@ -102,8 +125,9 @@ int	raycast(t_data *data)
 			data->perp_wall_dist = (data->sidedist_x - data->deltadist_x);
 		else
 			data->perp_wall_dist = (data->sidedist_y - data->deltadist_y);
+		wall_projection(data, x);
 		x++;
 	}
-	
+	return 0;
 }
  

@@ -31,6 +31,7 @@ SRC =	srcs/main/main.c \
 		srcs/window/game_loop.c \
 		srcs/window/draw_map.c \
 		srcs/cleanup/cleanup.c \
+		srcs/raycast/raycast.c \
 
 OBJ_DIR = objs
 OBJS = $(SRC:srcs/%.c=$(OBJ_DIR)/%.o)

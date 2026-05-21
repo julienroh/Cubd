@@ -91,6 +91,9 @@ typedef struct s_data
 	double	perp_wall_dist;
 	double	side;
 	double	hit;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
 
 	char	*error_msg;
 	t_mlx	mlx;
@@ -102,6 +105,7 @@ typedef struct s_data
 
 //raycast.c
 
+int		raycast(t_data *data);
 
 //cleanup.c
 
