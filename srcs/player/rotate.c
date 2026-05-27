@@ -6,7 +6,7 @@
 /*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 14:52:09 by haoky             #+#    #+#             */
-/*   Updated: 2026/05/20 14:52:25 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/27 10:54:36 by haoky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	rotate_left(t_data *data)
 
 	old_player_dir_x = data->player_dir_x;
 	old_plane_x = data->plane_x;
-	rot_speed = -0.05;
+	rot_speed = -0.02;
 	data->player_dir_x = data->player_dir_x * cos(rot_speed)
 		- data->player_dir_y * sin(rot_speed);
 	data->player_dir_y = old_player_dir_x * sin(rot_speed)
@@ -44,7 +44,7 @@ void	rotate_right(t_data *data)
 
 	old_plane_x = data->plane_x;
 	old_player_dir_x = data->player_dir_x;
-	rot_speed = 0.05;
+	rot_speed = 0.02;
 	data->player_dir_x = data->player_dir_x * cos(rot_speed)
 		- data->player_dir_y * sin(rot_speed);
 	data->player_dir_y = old_player_dir_x * sin(rot_speed)
