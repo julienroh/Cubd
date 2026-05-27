@@ -6,7 +6,7 @@
 /*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 12:00:37 by mfumeaux          #+#    #+#             */
-/*   Updated: 2026/05/20 14:04:40 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/20 14:49:34 by haoky            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ int	handle_key_press(int keysym, t_data *data)
 		data->key_a = 1;
 	else if (keysym == XK_d)
 		data->key_d = 1;
+	else if (keysym == XK_Left)
+		data->left = 1;
+	else if (keysym == XK_Right)
+		data->right = 1;
 	return (0);
 }
 
@@ -37,6 +41,10 @@ int	handle_key_release(int keysym, t_data *data)
 		data->key_a = 0;
 	else if (keysym == XK_d)
 		data->key_d = 0;
+	else if (keysym == XK_Left)
+		data->left = 0;
+	else if (keysym == XK_Right)
+		data->right = 0;
 	return (0);
 }
 

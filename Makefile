@@ -20,6 +20,7 @@ SRC =	srcs/main/main.c \
 		srcs/player/initialize_player.c \
 		srcs/player/move_player.c \
 		srcs/player/draw_player.c \
+		srcs/player/rotate.c \
 		srcs/render/render_frame.c \
 		srcs/utils/parsing_utils.c \
 		srcs/utils/parsing_utils_2.c \

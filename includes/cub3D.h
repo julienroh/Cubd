@@ -21,6 +21,9 @@
 
 
 # define TILE_SIZE 32
+# define PLAYER_RADIUS 0.25
+# define PLAYER_DRAW_SIZE 16
+# define MOVE_SPEED 0.02
 # define WIN_H 1024
 # define WIN_W 720
 # define PARSE_OK 0
@@ -60,6 +63,8 @@ typedef struct s_data
 	int		key_s;
 	int		key_a;
 	int		key_d;
+	int		right;
+	int		left;
 
 	t_color	floor;//a free
 	t_color	ceiling;//a free
@@ -180,6 +185,11 @@ int		initialize_player(t_data *data);
 
 void	move_forward(t_data *data);
 void	move_backward(t_data *data);
+void	move_left(t_data *data);
+void	move_right(t_data *data);
+
+//rotate.c
+
 void	rotate_left(t_data *data);
 void	rotate_right(t_data *data);
 
