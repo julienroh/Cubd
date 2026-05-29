@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 13:28:16 by jroh              #+#    #+#             */
-/*   Updated: 2026/05/15 15:15:12 by mfumeaux         ###   ########.fr       */
+/*   Updated: 2026/05/29 15:26:48 by jroh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,8 @@ void	initialize_data_two(t_data *data)
 	data->sidedist_y = 0;
 	data->deltadist_x = 0;
 	data->deltadist_y = 0;
+	data->error_msg = NULL;
+	data->mlx.img = NULL;
+	data->mlx.mlx = NULL;
+	data->mlx.addr = NULL;
 }

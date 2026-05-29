@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 09:43:24 by jroh              #+#    #+#             */
-/*   Updated: 2026/05/21 15:07:16 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/29 15:25:35 by jroh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,6 @@ static void	initialize_data(t_data *data)
 	data->player_dir_y = 0;
 	data->plane_x = 0;
 	data->plane_y = 0;
-	data->error_msg = NULL;
-	data->mlx.img = NULL;
-	data->mlx.mlx = NULL;
-	data->mlx.addr = NULL;
 	initialize_data_two(data);
 }
 
@@ -96,10 +92,16 @@ int	main(int argc, char **argv)
 	(void)argv;
 	initialize_data(&data);
 	if (parsing_file(&data, argv[1]) == 1)
-		return (1); //free_all(data);
+	{
+		free_all(&data);
+		return (1);
+	}
 	data.map_width = get_map_width(data.map);
 	if (initialize_player(&data) == 1)
-		return (1);//free_all(data);
+	{
+		free_all(&data);
+		return (1);
+	}
 	print_data(&data);
 	start(&data);
 	clean(&data);

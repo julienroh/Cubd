@@ -117,6 +117,10 @@ int		raycast(t_data *data);
 
 void	clean(t_data *data);
 
+//free_all.c
+
+void	free_all(t_data *data);
+
 //windowstart.c
 
 void	start(t_data *data);

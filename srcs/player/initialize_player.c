@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_player.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:47:38 by haoky             #+#    #+#             */
-/*   Updated: 2026/05/14 14:44:36 by mfumeaux         ###   ########.fr       */
+/*   Updated: 2026/05/29 15:30:20 by jroh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 /* Assign correct vector depending of the player spawn orientation 
 Nb :  0.66 = FOV of the plane camera. */
-static void  set_vector_dir_plane(t_data *data, char direction)
+
+static void	set_vector_dir_plane(t_data *data, char direction)
 {
 	if (direction == 'N')
 	{
@@ -53,15 +54,15 @@ static int	set_player_dir(t_data *data, char direction, int x, int y)
 	return (0);
 }
 
-
 int	initialize_player(t_data *data)
 {
 	int	i;
 	int	j;
 	int	ret;
 
-	i = 0;
-	while (i < data->map_height)
+	i = -1;
+	ret = 0;
+	while (++i < data->map_height)
 	{
 		j = 0;
 		while (data->map[i][j])
@@ -78,7 +79,6 @@ int	initialize_player(t_data *data)
 				return (1);
 			j++;
 		}
-		i++;
 	}
 	return (0);
 }

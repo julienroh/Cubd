@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 11:32:00 by haoky             #+#    #+#             */
-/*   Updated: 2026/05/21 14:57:56 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/29 15:33:50 by jroh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	move_forward(t_data *data)
 	{
 		data->player_x = new_x;
 		data->player_y = new_y;
-
 	}
 }
 

@@ -11,6 +11,7 @@ RM = rm -rf
 LIBFT = libft/libft.a
 
 SRC =	srcs/main/main.c \
+		srcs/free/free_all.c \
 		srcs/parsing/map.c \
 		srcs/parsing/parse_color.c \
 		srcs/parsing/parse_direction.c \

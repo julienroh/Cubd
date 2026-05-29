@@ -6,7 +6,7 @@
 /*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 14:52:09 by haoky             #+#    #+#             */
-/*   Updated: 2026/05/29 13:17:35 by jroh             ###   ########.fr       */
+/*   Updated: 2026/05/29 15:34:16 by jroh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 void	rotate_left(t_data *data)
 {
 	double	rot_speed;
-	double 	old_player_dir_x;
+	double	old_player_dir_x;
 	double	old_plane_x;
 
 	old_player_dir_x = data->player_dir_x;
@@ -39,7 +39,7 @@ void	rotate_left(t_data *data)
 void	rotate_right(t_data *data)
 {
 	double	rot_speed;
-	double 	old_player_dir_x;
+	double	old_player_dir_x;
 	double	old_plane_x;
 
 	old_plane_x = data->plane_x;

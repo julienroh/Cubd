@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:00:16 by mfumeaux          #+#    #+#             */
-/*   Updated: 2026/05/21 19:34:36 by mfumeaux         ###   ########.fr       */
+/*   Updated: 2026/05/29 15:36:10 by jroh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,15 @@ static void	initialize_dda_vars(t_data *data, int x)
 	// data->screen_ratio = 2 * x / WIN_W - 1;
 	data->screen_ratio = 2.0 * x / (double)WIN_W - 1.0;
 	data->raydir_x = data->player_dir_x + data->plane_x
-	* data->screen_ratio;
+		* data->screen_ratio;
 	data->raydir_y = data->player_dir_y + data->plane_y
-	* data->screen_ratio;
+		* data->screen_ratio;
 	data->deltadist_x = fabs(1 / data->raydir_x);
 	data->deltadist_y = fabs(1 / data->raydir_y);
 	if (data->raydir_x == 0)
 		data->deltadist_x = 1e30;
 	else
-	data->deltadist_x = fabs(1 / data->raydir_x);
+		data->deltadist_x = fabs(1 / data->raydir_x);
 	data->map_x = (int)data->player_x;
 	data->map_y = (int)data->player_y;
 	initialize_sidedist_dda(data);
@@ -94,10 +94,10 @@ static void	wall_projection(t_data *data, int x)
 	data->line_height = (int)(WIN_H / data ->perp_wall_dist);
 	data->draw_start = -(data->line_height) / 2 + WIN_H / 2;
 	if (data->draw_start < 0)
-	data->draw_start = 0;
+		data->draw_start = 0;
 	data->draw_end = data->line_height / 2 + WIN_H / 2;
 	if (data->draw_end >= WIN_H)
-	data->draw_end = WIN_H - 1;
+		data->draw_end = WIN_H - 1;
 	y = data->draw_start;
 	while (y <= data->draw_end)
 	{
@@ -112,8 +112,8 @@ static void	wall_projection(t_data *data, int x)
 
 int	raycast(t_data *data)
 {
-	int x;
-	
+	int	x;
+
 	x = 0;
 	while (x < WIN_W)
 	{
@@ -128,6 +128,5 @@ int	raycast(t_data *data)
 		wall_projection(data, x);
 		x++;
 	}
-	return 0;
+	return (0);
 }
- 

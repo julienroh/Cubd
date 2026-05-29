@@ -6,7 +6,7 @@
 /*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 11:32:11 by haoky             #+#    #+#             */
-/*   Updated: 2026/05/29 13:36:49 by jroh             ###   ########.fr       */
+/*   Updated: 2026/05/29 15:27:48 by jroh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,15 @@ void	draw_player(t_data *data)
 
 	x = (int)(data->player_x * MMAP_SIZE);
 	y = (int)(data->player_y * MMAP_SIZE);
-	draw_player_square(data, x - PLAYER_DRAW_SIZE / 2, y - PLAYER_DRAW_SIZE / 2, 1234567);
+	draw_player_square(data, x - PLAYER_DRAW_SIZE / 2,
+		y - PLAYER_DRAW_SIZE / 2, 1234567);
 }
 
 void	draw_dir(t_data *data)
 {
 	double	curr_x;
 	double	curr_y;
-	int 	k;
+	int		k;
 
 	k = 0;
 	curr_x = (data->player_x * MMAP_SIZE) + (PLAYER_RADIUS);
