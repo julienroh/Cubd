@@ -21,11 +21,12 @@
 
 
 # define TILE_SIZE 32
+# define MMAP_SIZE 12
 # define PLAYER_RADIUS 0.25
-# define PLAYER_DRAW_SIZE 16
-# define MOVE_SPEED 0.02
-# define WIN_H 1024
-# define WIN_W 720
+# define PLAYER_DRAW_SIZE 8
+# define MOVE_SPEED 0.03
+# define WIN_W 1280
+# define WIN_H 720
 # define PARSE_OK 0
 # define PARSE_ERROR 1
 # define PARSE_NOT_MATCH 2

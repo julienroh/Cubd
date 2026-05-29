@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 11:32:11 by haoky             #+#    #+#             */
-/*   Updated: 2026/05/27 10:50:40 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/29 13:36:49 by jroh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	draw_player(t_data *data)
 	int	x;
 	int	y;
 
-	x = (int)(data->player_x * TILE_SIZE);
-	y = (int)(data->player_y * TILE_SIZE);
+	x = (int)(data->player_x * MMAP_SIZE);
+	y = (int)(data->player_y * MMAP_SIZE);
 	draw_player_square(data, x - PLAYER_DRAW_SIZE / 2, y - PLAYER_DRAW_SIZE / 2, 1234567);
 }
 
@@ -47,9 +47,9 @@ void	draw_dir(t_data *data)
 	int 	k;
 
 	k = 0;
-	curr_x = (data->player_x * TILE_SIZE) + (PLAYER_RADIUS);
-	curr_y = (data->player_y * TILE_SIZE) + (PLAYER_RADIUS);
-	while (k < 50)
+	curr_x = (data->player_x * MMAP_SIZE) + (PLAYER_RADIUS);
+	curr_y = (data->player_y * MMAP_SIZE) + (PLAYER_RADIUS);
+	while (k < MMAP_SIZE * 2)
 	{
 		img_pix_put(&data->mlx, (int)curr_x, (int)curr_y, 0xFF4444);
 		curr_x += data->player_dir_x;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 11:31:32 by haoky             #+#    #+#             */
-/*   Updated: 2026/05/08 15:47:28 by haoky            ###   ########.fr       */
+/*   Updated: 2026/05/29 13:22:08 by jroh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	draw_map(t_data *data)
 		while (data->map[i][j])
 		{
 			if (data->map[i][j] == '0')
-				draw_square(data, j * TILE_SIZE, i * TILE_SIZE, 0x000000);
+				draw_square(data, j * MMAP_SIZE, i * MMAP_SIZE, 0x000000);
 			else if (data->map[i][j] == '1')
-				draw_square(data, j * TILE_SIZE, i * TILE_SIZE, 0xFFFFFF);
+				draw_square(data, j * MMAP_SIZE, i * MMAP_SIZE, 0xFFFFFF);
 			j++;
 		}
 		i++;

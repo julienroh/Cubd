@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_frame.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 15:38:43 by haoky             #+#    #+#             */
-/*   Updated: 2026/05/21 19:17:41 by mfumeaux         ###   ########.fr       */
+/*   Updated: 2026/05/29 13:37:10 by jroh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	render_frame(t_data *data)
 {
 	draw_background(data);
+	raycast(data);
 	draw_map(data);
 	draw_player(data);
 	draw_dir(data);
-	raycast(data);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->mlx.img, 0, 0);
 }
