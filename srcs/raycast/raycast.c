@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:00:16 by mfumeaux          #+#    #+#             */
-/*   Updated: 2026/05/29 15:36:10 by jroh             ###   ########.fr       */
+/*   Updated: 2026/06/02 12:20:45 by mfumeaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	initialize_sidedist_dda(t_data *data)
 	*/
 static void	initialize_dda_vars(t_data *data, int x)
 {
-	// data->screen_ratio = 2 * x / WIN_W - 1;
+	//data->screen_ratio = 2 * x / WIN_W - 1;
 	data->screen_ratio = 2.0 * x / (double)WIN_W - 1.0;
 	data->raydir_x = data->player_dir_x + data->plane_x
 		* data->screen_ratio;
