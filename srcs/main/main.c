@@ -6,7 +6,7 @@
 /*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 09:43:24 by jroh              #+#    #+#             */
-/*   Updated: 2026/06/02 12:50:43 by jroh             ###   ########.fr       */
+/*   Updated: 2026/06/02 13:34:01 by jroh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,6 @@ int	main(int argc, char **argv)
 	start(&data);
 	print_data(&data);
 	clean(&data);
+	free_all(&data);
 	return (0);
 }
