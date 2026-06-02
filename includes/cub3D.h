@@ -53,12 +53,23 @@ typedef struct s_mlx
 
 }	t_mlx;
 
+typedef struct s_texture
+{
+	void	*img_ptr;
+	char	*data;
+	int		width;
+	int		height;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_texture;
+
 typedef struct s_data
 {
 	char	*no;
 	char	*so;
 	char	*we;
-	char	*ea;//a free
+	char	*ea; //a free
 
 	int		key_w;
 	int		key_s;
@@ -102,7 +113,11 @@ typedef struct s_data
 	int		draw_end;
 
 	char	*error_msg;
-	t_mlx	mlx;
+	t_texture	tex_north;
+	t_texture	tex_south;
+	t_texture	tex_east;
+	t_texture	tex_west;
+	t_mlx		mlx;
 }	t_data;
 
 
@@ -210,6 +225,7 @@ int		is_nbr(char *s);
 
 int		ft_isspace(char c);
 void	initialize_data_two(t_data *data);
+void	initialize_data_textures(t_data *data);
 
 //window_utils.c
 

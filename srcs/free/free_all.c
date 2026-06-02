@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 14:32:01 by jroh              #+#    #+#             */
-/*   Updated: 2026/05/29 15:00:01 by jroh             ###   ########.fr       */
+/*   Updated: 2026/06/02 13:21:38 by mfumeaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-// static void	free_color(t_color color)
-// {
-// 	free(color.r);
-// 	free(color.g);
-// 	free(color.b);
-// }
 
 static void	free_path(t_data *data)
 {
@@ -30,7 +23,5 @@ static void	free_path(t_data *data)
 void	free_all(t_data *data)
 {
 	free_map(data->map);
-	// free_color(data->floor);
-	// free_color(data->ceiling);
 	free_path(data);
 }

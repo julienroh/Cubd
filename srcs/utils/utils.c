@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 13:28:16 by jroh              #+#    #+#             */
-/*   Updated: 2026/05/29 15:26:48 by jroh             ###   ########.fr       */
+/*   Updated: 2026/06/02 13:53:15 by mfumeaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	ft_isspace(char c)
 		return (1);
 	return (0);
 }
+
+
 
 void	initialize_data_two(t_data *data)
 {
