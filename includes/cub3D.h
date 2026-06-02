@@ -225,7 +225,6 @@ int		is_nbr(char *s);
 
 int		ft_isspace(char c);
 void	initialize_data_two(t_data *data);
-void	initialize_data_textures(t_data *data);
 
 //window_utils.c
 
