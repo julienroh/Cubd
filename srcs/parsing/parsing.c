@@ -6,7 +6,7 @@
 /*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 10:10:50 by jroh              #+#    #+#             */
-/*   Updated: 2026/06/02 11:06:40 by jroh             ###   ########.fr       */
+/*   Updated: 2026/06/02 12:57:39 by jroh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static int	check_map(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (map[i][j] != '1' && map[i][j] != ' ' && is_surrounded(map, i, j) == 0)
+			if (map[i][j] != '1' && map[i][j] != ' ' &&
+				is_surrounded(map, i, j) == 0)
 			{
 				printf("Error\nMap not surrounded by walls\n");
 				return (1);
