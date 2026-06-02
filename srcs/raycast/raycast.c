@@ -6,7 +6,7 @@
 /*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:00:16 by mfumeaux          #+#    #+#             */
-/*   Updated: 2026/06/02 12:20:45 by mfumeaux         ###   ########.fr       */
+/*   Updated: 2026/06/02 15:00:13 by mfumeaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static void	initialize_sidedist_dda(t_data *data)
 	*/
 static void	initialize_dda_vars(t_data *data, int x)
 {
-	//data->screen_ratio = 2 * x / WIN_W - 1;
 	data->screen_ratio = 2.0 * x / (double)WIN_W - 1.0;
 	data->raydir_x = data->player_dir_x + data->plane_x
 		* data->screen_ratio;
@@ -90,6 +89,8 @@ static void	dda(t_data *data)
 static void	wall_projection(t_data *data, int x)
 {
 	int	y;
+	int color;
+	int ray_collision;
 
 	data->line_height = (int)(WIN_H / data ->perp_wall_dist);
 	data->draw_start = -(data->line_height) / 2 + WIN_H / 2;
@@ -101,12 +102,8 @@ static void	wall_projection(t_data *data, int x)
 	y = data->draw_start;
 	while (y <= data->draw_end)
 	{
-		img_pix_put(&data->mlx, x, y, 0x007F00);
-		// if (data->side == 1)
-		// 	img_pix_put(&data->mlx, x, y, 0x007F00);
-		// else
-		// 	img_pix_put(&data->mlx, x, y, 0x00FF00);
-		y++;
+		select_texture(data);
+		
 	}
 }
 

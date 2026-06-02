@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 12:00:30 by mfumeaux          #+#    #+#             */
-/*   Updated: 2026/05/20 14:04:19 by haoky            ###   ########.fr       */
+/*   Updated: 2026/06/02 14:35:31 by mfumeaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,8 @@ void	clean(t_data *data)
 		free(data->mlx.mlx);
 		data->mlx.mlx = NULL;
 	}
-	// Insérer les free du parsing ici.
+	mlx_destroy_image(data->mlx.mlx, data->tex_east.img_ptr);
+	mlx_destroy_image(data->mlx.mlx, data->tex_north.img_ptr);
+	mlx_destroy_image(data->mlx.mlx, data->tex_west.img_ptr);
+	mlx_destroy_image(data->mlx.mlx, data->tex_south.img_ptr);
 }

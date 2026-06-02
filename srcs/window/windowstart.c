@@ -6,7 +6,7 @@
 /*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 12:00:39 by mfumeaux          #+#    #+#             */
-/*   Updated: 2026/06/02 14:17:21 by mfumeaux         ###   ########.fr       */
+/*   Updated: 2026/06/02 14:28:06 by mfumeaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	start(t_data *data)
 		return ;
 	data->mlx.addr = mlx_get_data_addr(data->mlx.img, &data->mlx.bits_per_pixel,
 			&data->mlx.line_len, &data->mlx.endian);
-	if (initialize_data_textures(data) == 1)
+	if (initialize_data_textures_images(data) == 1)
 		return ;
 	render_frame(data);
 	mlx_hook(data->mlx.win, KeyPress, KeyPressMask,

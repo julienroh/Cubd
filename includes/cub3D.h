@@ -111,8 +111,9 @@ typedef struct s_data
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
-
 	char	*error_msg;
+
+	t_texture	*selected_text;
 	t_texture	tex_north;
 	t_texture	tex_south;
 	t_texture	tex_east;
