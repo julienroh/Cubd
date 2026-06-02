@@ -6,7 +6,7 @@
 /*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:47:38 by haoky             #+#    #+#             */
-/*   Updated: 2026/05/29 15:30:20 by jroh             ###   ########.fr       */
+/*   Updated: 2026/06/02 11:45:15 by jroh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	set_vector_dir_plane(t_data *data, char direction)
 	}
 }
 
-/* Assign vectors and position of player. */
+/* Assign vectors and position of player. Set the spawn for the player.*/
 static int	set_player_dir(t_data *data, char direction, int x, int y)
 {
 	data->map[y][x] = '0';
@@ -49,8 +49,8 @@ static int	set_player_dir(t_data *data, char direction, int x, int y)
 		return (1);
 	}
 	set_vector_dir_plane(data, direction);
-	data->player_x = x;
-	data->player_y = y;
+	data->player_x = x + 0.5;
+	data->player_y = y + 0.5;
 	return (0);
 }
 
