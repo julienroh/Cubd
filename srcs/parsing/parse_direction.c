@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   parse_direction.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 20:30:58 by haoky             #+#    #+#             */
-/*   Updated: 2026/05/20 14:05:15 by haoky            ###   ########.fr       */
+/*   Updated: 2026/06/02 12:57:25 by jroh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+static int	has_xpm_extension(char *str)
+{
+	int	len;
+
+	len = ft_strlen(str);
+	if (len < 4)
+		return (0);
+	if (!ft_strncmp(str + len - 4, ".xpm", 4))
+		return (1);
+	return (0);
+}
 
 static char	**get_texture_path(t_data *data, char *line)
 {
@@ -40,5 +52,7 @@ int	read_direction(t_data *data, char *line)
 	*path = ft_strtrim(line, " \n\t");
 	if (!*path)
 		return (data->error_msg = "Malloc failed", PARSE_ERROR);
+	if (!has_xpm_extension(*path))
+		return (data->error_msg = "Need .xpm extension", PARSE_ERROR);
 	return (PARSE_OK);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 12:28:48 by jroh              #+#    #+#             */
-/*   Updated: 2026/05/20 14:05:40 by haoky            ###   ########.fr       */
+/*   Updated: 2026/06/02 13:03:31 by jroh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ int	read_file(t_data *data, int fd)
 	int		in_map;
 
 	in_map = 0;
-	while ((line = get_next_line(fd)))
+	while (1)
 	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
 		if (process_line(data, line, &in_map) == 1)
 			return (free(line), 1);
 		free(line);

@@ -6,7 +6,7 @@
 /*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 09:43:24 by jroh              #+#    #+#             */
-/*   Updated: 2026/06/02 11:31:47 by jroh             ###   ########.fr       */
+/*   Updated: 2026/06/02 12:50:43 by jroh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,31 @@ static void	initialize_data(t_data *data)
 	initialize_data_two(data);
 }
 
+static int	has_cub_extension(char *str)
+{
+	int	len;
+
+	len = ft_strlen(str);
+	if (len < 4)
+	{
+		printf("Error\nNeed .cub extension\n");
+		return (0);
+	}
+	if (!ft_strncmp(str + len - 4, ".cub", 4))
+		return (1);
+	printf("Error\nNeed .cub extension\n");
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
 
-	if (argc != 2)
+	if (argc != 2 || !has_cub_extension(argv[1]))
 	{
 		printf("Usage: ./cub3D map.cub\n");
 		return (1);
 	}
-	(void)argc;
-	(void)argv;
 	initialize_data(&data);
 	if (parsing_file(&data, argv[1]) == 1)
 	{
