@@ -6,7 +6,7 @@
 /*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:00:16 by mfumeaux          #+#    #+#             */
-/*   Updated: 2026/06/02 15:00:13 by mfumeaux         ###   ########.fr       */
+/*   Updated: 2026/06/07 14:28:16 by mfumeaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ static void	initialize_sidedist_dda(t_data *data)
 
 /*	Calculate screen ratio from left (-1) to right (1).
 	Calculate the ray vector (raydir_x & raydir_y) (slope of the ray).
-	Calculate sidedist X and Y : shortest distance to the nearest wall.
-	Calculate deltadist X and Y : distance of the ray to travel 1 grid unit.
+	Calculate sidedist X and Y : total accumulated multiplicator of raydir to 
+	get to a line of the grid. gets incremented by deltadist in dda.
+	Calculate deltadist X and Y : By how much i need to multiplicate raydir to
+	advance 1 grade case in x or y.
 	Map_x & Map_y are the current tile the player is on.
 	step is to tell DDA in which direction to go.
 	*/
@@ -86,13 +88,16 @@ static void	dda(t_data *data)
 	}
 }
 
+/*	step : How much i go further on the texture for +1 pixel on the screen.
+	tex_pos : Exact position in the texture.
+	tex_y : Y position in the image of the texture.
+*/
 static void	wall_projection(t_data *data, int x)
 {
 	int	y;
 	int color;
-	int ray_collision;
 
-	data->line_height = (int)(WIN_H / data ->perp_wall_dist);
+	data->line_height = (int)(WIN_H / data->perp_wall_dist);
 	data->draw_start = -(data->line_height) / 2 + WIN_H / 2;
 	if (data->draw_start < 0)
 		data->draw_start = 0;
@@ -100,10 +105,18 @@ static void	wall_projection(t_data *data, int x)
 	if (data->draw_end >= WIN_H)
 		data->draw_end = WIN_H - 1;
 	y = data->draw_start;
+	select_texture(data);
+	data->step = (double)data->selected_text->height / data->line_height;
+	data->tex_pos = ((data->draw_start - WIN_H / 2 + data->line_height / 2)
+		* data->step);
 	while (y <= data->draw_end)
 	{
-		select_texture(data);
-		
+		data->tex_y = (int)data->tex_pos & (data->selected_text->height - 1); // horreur, a simplifier.
+		data->tex_pos += data->step;
+		color = *(int *)(data->selected_text->data + 
+			(data->tex_y * data->selected_text->line_len + data->tex_x * (data->selected_text->bpp / 8)));
+		img_pix_put(&data->mlx, x, y, color);
+		y++;
 	}
 }
 
@@ -119,9 +132,9 @@ int	raycast(t_data *data)
 		initialize_dda_vars(data, x);
 		dda(data);
 		if (data->side == 0)
-			data->perp_wall_dist = (data->sidedist_x - data->deltadist_x);
+			data->perp_wall_dist = data->sidedist_x - data->deltadist_x;
 		else
-			data->perp_wall_dist = (data->sidedist_y - data->deltadist_y);
+			data->perp_wall_dist = data->sidedist_y - data->deltadist_y;
 		wall_projection(data, x);
 		x++;
 	}

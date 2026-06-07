@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jroh <jroh@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 14:52:09 by haoky             #+#    #+#             */
-/*   Updated: 2026/05/29 15:34:16 by jroh             ###   ########.fr       */
+/*   Updated: 2026/06/07 13:07:59 by mfumeaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 /*  rotate angle of view using rotation matrice :
-		x_new = x * cos(alpha) - y * sin(alpha)
-		y_new = x * sin(alpha) + y * cos(alpha)
-		alpha = angle of rotation, determining rot_speed.	*/
+	x_new = x * cos(alpha) - y * sin(alpha)
+	y_new = x * sin(alpha) + y * cos(alpha)
+	alpha = angle of rotation, determining rot_speed.	*/
 
 void	rotate_left(t_data *data)
 {

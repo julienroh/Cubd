@@ -6,18 +6,20 @@
 /*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:27:18 by mfumeaux          #+#    #+#             */
-/*   Updated: 2026/06/02 15:07:33 by mfumeaux         ###   ########.fr       */
+/*   Updated: 2026/06/06 23:43:19 by mfumeaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+/*	wall_x : Where the ray hit the wall, between 0 and 1.
+	tex_x : conversion of wall_x in a pixel of the texture.
+*/
 void	select_texture(t_data *data)
 {
-	double wallX;
 	if (data->side == 0)
 	{
-		wallX = data->player_y + data->perp_wall_dist * data->raydir_y;
+		data->wall_x = data->player_y + data->perp_wall_dist * data->raydir_y;
 		if (data->raydir_x > 0)
 			data->selected_text = &data->tex_east;
 		else
@@ -25,17 +27,13 @@ void	select_texture(t_data *data)
 	}
 	else
 	{
-		wallX = data->player_y + data->perp_wall_dist * data->raydir_x;
+		data->wall_x = data->player_x + data->perp_wall_dist * data->raydir_x;
 		if (data->raydir_y > 0)
 			data->selected_text = &data->tex_south;
 		else
 			data->selected_text = &data->tex_north;
 	}
-	wallX -= floor(wallX);
+	data->wall_x -= floor(data->wall_x);
+	data->tex_x = (int)(data->wall_x * data->selected_text->width);
 }
 
-void draw_wall(t_data *data, int x, int start_y, int end_y)
-{
-
-	
-}

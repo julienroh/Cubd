@@ -6,7 +6,7 @@
 /*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 12:00:39 by mfumeaux          #+#    #+#             */
-/*   Updated: 2026/06/02 14:28:06 by mfumeaux         ###   ########.fr       */
+/*   Updated: 2026/06/07 13:17:27 by mfumeaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,4 @@ void	start(t_data *data)
 	mlx_hook(data->mlx.win, DestroyNotify, StructureNotifyMask,
 		&handle_close, data);
 	mlx_loop(data->mlx.mlx);
-	clean(data);
 }

@@ -1,7 +1,7 @@
-NO ./assets/north.xpm
-SO ./assets/south.xpm
-WE ./assets/west.xpm
-EA ./assets/east.xpm
+NO ./assets/doom1.xpm
+SO ./assets/doom2.xpm
+WE ./assets/doom3.xpm
+EA ./assets/doom4.xpm
 
 F 200, 200, 200
 C 135, 206, 235

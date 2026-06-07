@@ -108,6 +108,12 @@ typedef struct s_data
 	double	perp_wall_dist;
 	double	side;
 	double	hit;
+	double	wall_x;
+	double	step;
+	double	tex_pos;
+	int		tex_x;
+	int		tex_y;
+
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
@@ -122,8 +128,8 @@ typedef struct s_data
 }	t_data;
 
 
-//camera.c
-
+//texture.c
+void	select_texture(t_data *data);
 
 //raycast.c
 
