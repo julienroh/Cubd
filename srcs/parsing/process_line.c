@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_line.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haoky <haoky@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 20:19:46 by haoky             #+#    #+#             */
-/*   Updated: 2026/05/21 15:22:58 by haoky            ###   ########.fr       */
+/*   Updated: 2026/06/08 11:34:15 by mfumeaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	handle_map_line(t_data *data, char *line)
 {
 	if (!is_map_line(line))
-		return (printf("Error\nInvalid map\n"), 1);
+		return (printf("Error\nInvalid map position\n"), 1);
 	return (add_map_line(data, line));
 }
 

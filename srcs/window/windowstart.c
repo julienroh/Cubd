@@ -6,7 +6,7 @@
 /*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 12:00:39 by mfumeaux          #+#    #+#             */
-/*   Updated: 2026/06/07 13:17:27 by mfumeaux         ###   ########.fr       */
+/*   Updated: 2026/06/08 11:24:52 by mfumeaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static int	initialize_data_textures_images(t_data *data)
 		|| !data->tex_east.img_ptr || !data->tex_west.img_ptr)
 	{
 		printf("Error\nFailed to load textures\n");
-		free_all(data); //A TEST : CHECK LEAK SI LE LOAD DE TEXTURES FAIL ! ! 
 		return (1);
 	}
 	initialize_data_textures_addresses(data);
@@ -58,6 +57,8 @@ void	start(t_data *data)
 	data->mlx.mlx = mlx_init();
 	if (!data->mlx.mlx)
 		return ;
+	if (initialize_data_textures_images(data) == 1)
+		return ;
 	data->mlx.win = mlx_new_window(data->mlx.mlx, WIN_W, WIN_H, "LoupCaillou");
 	if (!data->mlx.win)
 		return ;
@@ -66,8 +67,6 @@ void	start(t_data *data)
 		return ;
 	data->mlx.addr = mlx_get_data_addr(data->mlx.img, &data->mlx.bits_per_pixel,
 			&data->mlx.line_len, &data->mlx.endian);
-	if (initialize_data_textures_images(data) == 1)
-		return ;
 	render_frame(data);
 	mlx_hook(data->mlx.win, KeyPress, KeyPressMask,
 		handle_key_press, data);
