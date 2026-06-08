@@ -1,4 +1,4 @@
-NO ./assets/jpg.xpm
+NO ./assets/north.xpm
 SO ./assets/wall2.xpm
 WE ./assets/wall3.xpm
 EA ./assets/wall4.xpm
@@ -8,7 +8,7 @@ C 225,30,0
 
     111111111
     100000001
-    1000N0001
+    1000E0001
     100000001
     100010001
     100000001

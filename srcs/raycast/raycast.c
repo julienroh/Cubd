@@ -6,7 +6,7 @@
 /*   By: mfumeaux <mfumeaux@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:00:16 by mfumeaux          #+#    #+#             */
-/*   Updated: 2026/06/07 14:28:16 by mfumeaux         ###   ########.fr       */
+/*   Updated: 2026/06/08 10:42:48 by mfumeaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,22 @@ static void	initialize_dda_vars(t_data *data, int x)
 		* data->screen_ratio;
 	data->raydir_y = data->player_dir_y + data->plane_y
 		* data->screen_ratio;
-	data->deltadist_x = fabs(1 / data->raydir_x);
-	data->deltadist_y = fabs(1 / data->raydir_y);
-	if (data->raydir_x == 0)
+	if (data->raydir_x == 0) 
 		data->deltadist_x = 1e30;
 	else
 		data->deltadist_x = fabs(1 / data->raydir_x);
+	if (data->raydir_y == 0) 
+		data->deltadist_y = 1e30;
+	else
+		data->deltadist_y = fabs(1 / data->raydir_y);
 	data->map_x = (int)data->player_x;
 	data->map_y = (int)data->player_y;
 	initialize_sidedist_dda(data);
 }
 
+/*	if side == 1, the wall hit is vertical. 
+	if side == 0, the wall hit is horizontal
+*/
 static void	dda(t_data *data)
 {
 	while (data->hit == 0)
@@ -88,9 +93,17 @@ static void	dda(t_data *data)
 	}
 }
 
-/*	step : How much i go further on the texture for +1 pixel on the screen.
+/*	step : How much i go further on the texture for +1 pixel on the screen. 
+	--> simply the ratio of  : texture height / line drawn height.
 	tex_pos : Exact position in the texture.
 	tex_y : Y position in the image of the texture.
+	color : selected_text->data = address in memory of first pixel. 
+			data->tex_y * data->selected_text->line_len = y axis of image.
+			data->tex_x * (data->selected_text->bpp / 8) = x axis of image.
+			this gives the exact pixel i want to print.
+	But this gives only 1 byte (char *) in select_text->data ! 
+	That's why we cast it into a (int *), and dereference it (*) to get the 
+	value.
 */
 static void	wall_projection(t_data *data, int x)
 {
@@ -111,7 +124,7 @@ static void	wall_projection(t_data *data, int x)
 		* data->step);
 	while (y <= data->draw_end)
 	{
-		data->tex_y = (int)data->tex_pos & (data->selected_text->height - 1); // horreur, a simplifier.
+		data->tex_y = (int)data->tex_pos & (data->selected_text->height - 1);
 		data->tex_pos += data->step;
 		color = *(int *)(data->selected_text->data + 
 			(data->tex_y * data->selected_text->line_len + data->tex_x * (data->selected_text->bpp / 8)));
